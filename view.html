@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+  <title>ORDERS</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Roboto+Mono:wght@300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+    h1 {
+        font-family: "Roboto Mono";
+        text-align: center;
+        color: rgb(0, 0, 0);
+    }
+    h3{
+      font-family: "Roboto Mono";
+        text-align: center;
+        color: rgb(0, 0, 0);
+    }
+    body{
+    font-family: "Roboto Mono";
+    background-size: 10%;
+    background-repeat: repeat;
+}
+    .tablewan{
+      color:#b98d52;
+    }
+    .bg-image {
+        background-size: 10%;
+        background-repeat: repeat;
+        background-color: #dac09f;
+    }
+
+    .form-outline {
+        font-family: "Roboto Mono";
+    }
+
+    .btn {
+        font-family: "Comfortaa";
+        background: #c9a77b;
+        border: transparent;
+        color: white;
+        text-align: center;
+        align-items: center;
+    }
+
+    .btn:hover {
+        background: #b98d52;
+        transition: .9s;
+        color: #000000;
+        border: transparent;
+    }
+    .text-center{
+        font-family: "Roboto mono";
+    }
+    .navbar{
+    background-color: #ffffff;
+
+}
+.navbar-brand{
+    font-size: x-large;
+}
+</style>
+</head>
+
+
+<body class="bg-one">
+  <nav class="navbar wow">
+      <div class="container-fluid">
+          <img src="image/logo.webp" alt="" width="50" height="40" class="d-inline-block align-text-top">
+          <a class="navbar-brand" href="main.html"></a>
+          <form class="d-flex">
+            <div class="view">
+              <a href="index.html" class="btn btn-success" id="logout" style="white-space: nowrap">
+                Log Out</a>
+              </button>
+          </form>
+      </div>
+      </div>
+  </nav>
+  <br>
+  <h3 class="text-center">COFFEE PROJECT ORDERS</h3>
+  <BR>
+  <div class="container">
+    <table class="table table-striped table-bordered">
+      <thead class="tablewan">
+        <th class="text-center">#</th>
+        <th class="text-center">Customer Name</th>
+        <th class="text-center">Order 1</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Order 2</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Order 3</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Order 4</th>
+        <th class="text-center">Quantity</th>
+      </thead>
+      <tbody id="tbody1">
+        <!-- <tr>
+
+            <td>2</td>
+
+            <td>tacv</td>
+
+            <td>10</td>
+
+            <td>B</td>
+
+            <td>male</td>
+
+          </tr> -->
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <br />
+  <div class="d-flex justify-content-center">
+    <a class="btn" href="main.html">Order Again</a>
+  </div>
+  <script type="module">
+    // Filling the table
+      var pcNo = 0;
+      var tbody = document.getElementById("tbody1");
+      function AddItemToTable(nameC, or1, q1, or2, q2, or3, q3, or4, q4) {
+        let trow = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let td6 = document.createElement("td");
+        let td7 = document.createElement("td");
+        let td8 = document.createElement("td");
+        let td9 = document.createElement("td");
+        let td10 = document.createElement("td");
+        td1.innerHTML = ++pcNo;
+        td2.innerHTML = nameC;
+        td3.innerHTML = or1;
+        td4.innerHTML = q1;
+        td5.innerHTML = or2;
+        td6.innerHTML = q2;
+        td7.innerHTML = or3;
+        td8.innerHTML = q3;
+        td9.innerHTML = or4;
+        td10.innerHTML = q4;
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        trow.appendChild(td9);
+        trow.appendChild(td10);
+        tbody.appendChild(trow);
+      }
+      function AddAllItemsToTable(Customer) {
+        pcNo = 0;
+        tbody.innerHTML = "";
+        Customer.forEach((element) => {
+          AddItemToTable(
+            element.NameC,
+            element.Or1,
+            element.Q1,
+            element.Or2,
+            element.Q2,
+            element.Or3,
+            element.Q3,
+            element.Or4,
+            element.Q4
+          );
+        });
+      }
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+      const firebaseConfig = {
+    apiKey: "AIzaSyCHIAKOrB-Exr-uzz6bY2RpaNzhjE1yVVs",
+    authDomain: "order-form-6c208.firebaseapp.com",
+    projectId: "order-form-6c208",
+    storageBucket: "order-form-6c208.appspot.com",
+    messagingSenderId: "97065521201",
+    appId: "1:97065521201:web:17e40683c532217c11c510",
+    measurementId: "G-XF30LCF9XZ"
+      };
+      const app = initializeApp(firebaseConfig);
+      import {
+        getDatabase,
+        ref,
+        child,
+        onValue,
+        get,
+      } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+      const db = getDatabase();
+      function GetAllDataRealtime() {
+        const dbRef = ref(db, "Customer");
+        onValue(dbRef, (snapshot) => {
+          var pcs = [];
+          snapshot.forEach((childSnapshot) => {
+            pcs.push(childSnapshot.val());
+          });
+          AddAllItemsToTable(pcs);
+        });
+      }
+      window.onload = GetAllDataRealtime;
+    </script>
+</body>
+
+</html>
